@@ -1,0 +1,49 @@
+#slider {
+    padding: 40px 0 0 0;
+    margin: 0 0 0 80px;
+    overflow: hidden;
+    width: 515px !important;
+    height: 190px !important;
+}
+
+#slider ul {
+    margin: 0; padding: 0; width: 515px;
+}
+
+#slider, #slider img, #slider ul li {
+    width: 515px !important;
+    height: 190px !important;
+}
+
+#prevBtn, #nextBtn {
+    display: block;
+    height: 77px;
+    position: absolute;
+    width: 30px;
+    z-index: 1000;
+    margin:0;
+    padding:0;
+}
+
+#prevBtn a, #nextBtn a {
+    display:block;
+    height:77px;
+    position:relative;
+    width:30px;
+    margin:0;
+    overflow:hidden;
+    padding:0;
+    text-indent: -8000px;
+    zindex: 1000;
+    top: -125px;
+}
+
+#nextBtn a {
+    background:transparent url(../images/flecha-der.gif) no-repeat scroll 0 0;
+    left: 600px;
+}
+
+#prevBtn a {
+    background:transparent url(../images/flecha-izq.gif) no-repeat scroll 0 0;
+    left: 55px;
+}
