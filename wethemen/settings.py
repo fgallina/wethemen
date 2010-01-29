@@ -1,10 +1,11 @@
 # Django settings for wethemen project.
+import os
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-    # ('Your Name', 'your_email@domain.com'),
+    ('Fabián E. Gallina', 'galli.87@gmail.com'),
 )
 
 MANAGERS = ADMINS
@@ -33,21 +34,24 @@ SITE_ID = 1
 # to load the internationalization machinery.
 USE_I18N = True
 
+PROJECT_ROOT = os.getcwd()
+
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"
-MEDIA_ROOT = ''
+MEDIA_ROOT = "%s/media/" % PROJECT_ROOT
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
 # Examples: "http://media.lawrence.com", "http://example.com/media/"
-MEDIA_URL = ''
+MEDIA_URL = '/media/'
 
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
 # Examples: "http://foo.com/media/", "/media/".
-ADMIN_MEDIA_PREFIX = '/media/'
+ADMIN_MEDIA_PREFIX = '/adminmedia/'
 
 # Make this unique, and don't share it with anybody.
+# Don't worry, this will be changed in production :) -- fg
 SECRET_KEY = '=xk+)23h9_9m!ghqpewf%)@9q9-pzj(l@%2(c@b^ouahvm0@a%'
 
 # List of callables that know how to import templates from various sources.
@@ -66,6 +70,8 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'wethemen.urls'
 
 TEMPLATE_DIRS = (
+    "%s/templates" % PROJECT_ROOT,
+    "%s/contact/templates" % PROJECT_ROOT,
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -76,4 +82,33 @@ INSTALLED_APPS = (
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.sites',
+
+    'filebrowser',
+    'tinymce',
+
+    'whethemen.flatpagesmod',
+    'whethemen.contact',
 )
+
+TINYMCE_JS_ROOT = MEDIA_ROOT + 'js/tiny_mce'
+TINYMCE_JS_URL = MEDIA_URL + 'js/tiny_mce/tiny_mce.js'
+TINYMCE_DEFAULT_CONFIG = {'theme': "advanced", 'relative_urls': False}
+
+FILEBROWSER_URL_FILEBROWSER_MEDIA = MEDIA_URL + '/filebrowser/'
+
+FILEBROWSER_EXTENSIONS = {
+    'Folder':[''],
+    'Image':['.jpg', '.jpeg', '.gif','.png','.tif','.tiff'],
+    'Video':['.mov','.wmv','.mpeg','.mpg','.avi','.rm'],
+    'Document':['.pdf','.doc','.rtf','.txt','.xls','.csv'],
+    'Sound':['.mp3','.mp4','.wav','.aiff','.midi'],
+    'Code':['.html','.py','.js','.css', '.php', '.el']
+}
+
+FILEBROWSER_SELECT_FORMATS = {
+    'File':['Folder','Document','Code','Sound','Video','Image'],
+    'Image':['Image'],
+    'Media':['Video','Sound']
+}
+
+THUMBNAIL_EXTENSION = 'png'
