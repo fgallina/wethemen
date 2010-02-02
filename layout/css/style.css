@@ -30,6 +30,14 @@ body {
     background-repeat: repeat-x;
 }
 
+em {
+    font-style: italic;
+}
+
+b, strong {
+    font-weight: bold;
+}
+
 #container {
 
 }
@@ -206,7 +214,7 @@ body {
 
 .fancy-buttons a {
     display: block;
-    text-decoration: none;
+    text-decoration: none !important;
     padding: 5px 0 5px 10px;
 }
 
@@ -235,6 +243,17 @@ body {
     padding: 40px;
     color: #d5cac7;
     line-height: 1.5em;
+}
+
+
+#footer-main a {
+    color: #d5cac7;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+#footer-main a:hover {
+    text-decoration: underline;
 }
 
 #footer-main .column {
