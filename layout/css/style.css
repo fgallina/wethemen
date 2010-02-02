@@ -192,6 +192,10 @@ body {
     line-height: 2em;
 }
 
+.fancy-buttons {
+    line-height: 0.95em;
+}
+
 .fancy-buttons li {
     margin: 0 20px 0 0;
     background-image: url(../images/sidebar-item-separator.gif);
@@ -222,10 +226,6 @@ body {
     background-color: #bcc0c4;
 }
 
-#footer {
-
-}
-
 #footer-main {
     width: 910px;
     height: 300px;
@@ -233,7 +233,8 @@ body {
     background-repeat: no-repeat;
     margin: 0px auto 0px auto;
     padding: 40px;
-    color: #392d2d;
+    color: #d5cac7;
+    line-height: 1.5em;
 }
 
 #footer-main .column {
@@ -282,3 +283,26 @@ body {
     background-color: #5b4f4f;
 }
 
+#footer-menu {
+    margin-top: -100px;
+    font-size: 1.5em;
+    text-align: center;
+    padding: 15px;
+}
+
+#footer-menu a {
+    text-decoration: none;
+    color: #978a86;
+    padding: 0 20px 0 20px;
+}
+
+#footer-menu a:hover {
+    text-decoration: underline;
+}
+
+#footer-copyright {
+    padding-top: 5px;
+    color: #d5cac7;
+    text-align: center;
+    font-size: 0.7em;
+} 
