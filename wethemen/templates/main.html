@@ -1,0 +1,132 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <title>{% block title %}WeTheMen{% endblock %}</title>
+    <meta name="content-type" content="text/html; charset=UTF-8" />
+    <script type="text/javascript" src="js/jquery-1.3.2.min.js"></script>
+    <script type="text/javascript" src="js/easySlider1.7.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+    {% block javascript %}{% endblock %}
+    <link rel="stylesheet" href="css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="css/clearfix.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" />
+    <!--[if IE 6]>
+    <link rel="stylesheet" href="css/ie.css" type="text/css" media="screen" />
+    <![endif]-->
+    <link rel="stylesheet" href="css/slider.css" type="text/css" media="screen" />
+    {% block css %}{% endblock %}
+  </head>
+  <body>
+    <div id="container">
+      <div id="header">        
+        <div id="header-menu-logo-container" class="clearfix">
+          <div id="header-logo">
+            <a href="#">
+              <img src="images/logo.gif" class="logo" alt="Software Development Experts" />
+            </a>
+          </div>
+          <div id="header-menu" class="clearfix">
+            <ul>
+              <li><a href="/">home</a></li>
+              <li><a href="/about/">about us</a></li>
+              <li><a href="/portfolio/">portfolio</a></li>
+              <li><a href="/blog/">blog</a></li>
+              <li><a href="/contact/" class="last">contact</a></li>
+            </ul>
+          </div>
+        </div>
+        <div id="header-main" class="clearfix">
+          <div id="slider_container" style="float: left">
+	    <div id="slider">
+	      <ul>
+	        <li style="width: 515px">
+                  <a href="#">
+                    <img src="images/tn/01.jpg" alt="Css Template Preview" />
+                  </a>
+                </li>
+	        <li style="width: 515px">
+                  <a href="#">
+                    <img src="images/tn/02.jpg" alt="Css Template Preview" />
+                  </a>
+                </li>
+	        <li style="width: 515px">
+                  <a href="#">
+                    <img src="images/tn/03.jpg" alt="Css Template Preview" />
+                  </a>
+                </li>
+	        <li style="width: 515px">
+                  <a href="#">
+                    <img src="images/tn/04.jpg" alt="Css Template Preview" />
+                  </a>
+                </li>
+	        <li style="width: 515px">
+                  <a href="#">
+                    <img src="images/tn/05.jpg" alt="Css Template Preview" />
+                  </a>
+                </li>
+	      </ul>
+	    </div>
+          </div>
+          <div id="header-text">
+            <h2>Nosotros</h2>
+            <p>
+              {% block header-text %}
+              Lorem ipsum dolor sit amet, consectetur adipisicing
+              elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua. Ut enimad minim veniam, quis
+              nostrud exercitation ullamco laboris nisi ut aliquip ex
+              ea commodo consequat... [LEER +]
+              {% endblock %}
+            </p>
+          </div>
+        </div>
+      </div>
+      <div id="main" class="clearfix">
+        <div id="main-left">
+          {% block content %}{% endblock %}
+        </div>
+        <div id="main-right">
+          <div id="main-right-content">
+            {% block search %}
+            <form method="get" id="search-form" action="/search/">
+              <p>
+                <input type="text" name="q" id="search-form-q" value="Search" />
+                <input type="image" id="search-form-submit" src="images/boton-buscar.gif"/>
+              </p>
+            </form>
+            {% endblock %}
+            {% block sidebar %}{% endblock %}            
+          </div>
+        </div>
+      </div>
+      <div id="footer">
+        <div id="footer-main" class="clearfix">
+          <div class="column">
+            <h3 class="contact">Contact</h3>
+            <p>
+              Have some project in mind?, Need a quotation?. Just fill
+              <a href="/contact/">this form</a> and let us know about
+              your idea.
+            </p>
+          </div>
+          <div class="column">
+            <h3 class="twitter">Twits</h3>
+            {# footer twits #}
+          </div>
+          <div class="column">
+            <h3 class="comments">Latest Comments</h3>
+            {# footer comments #}
+          </div>
+        </div>
+        <div id="footer-menu">
+          <a href="/">Home</a>
+          <a href="/about/">About</a>
+          <a href="/portfolio/">Portfolio</a>
+          <a href="/blog/">Blog</a>
+          <a href="/contact/">Contact</a>
+        </div>
+        <div id="footer-copyright">Copyright &copy; 2010. <strong>WeTheMen</strong> All Rights Reserved.</div>
+      </div>
+    </div>
+  </body>
+</html>
