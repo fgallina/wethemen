@@ -200,6 +200,58 @@ b, strong {
     line-height: 2em;
 }
 
+#main-right-content a.subscribe {
+    margin: 80px 0 10px 0;
+    text-decoration: none;
+}
+
+#main-right-content a.read-more {
+    display: inline-block;
+    width: 58px;
+    height: 26px;
+    background-image: url(../images/button.png);
+    background-repeat: no-repeat;
+    color: #fff;
+    font-weight: bold;
+    font-size: 16px;
+    text-decoration: none;
+    padding-left: 30px;
+    float: right;
+    margin: 10px 20px 10px 0;
+    padding-top: 6px;
+}
+
+#main-right-content a.read-more:hover {
+    background-image: url(../images/button-hover.png);
+}
+
+#main-right-content blockquote {
+    color: #596A74;
+    line-height: 1.5em;
+    font-size: 0.9em;
+    quotes: "\201C" "\201D";
+}
+
+#main-right-content blockquote:before { 
+    content: open-quote; font-weight: bold; 
+}
+
+#main-right-content blockquote:after { 
+    content: close-quote; font-weight: bold; 
+}
+
+#main-right-content p.quote-author {
+    text-align: right;
+    color: #596A74;
+    font-style: italic;
+    font-size: 0.7em;
+    margin: 10px 10px 0 0;
+}
+
+#main-right-content blockquote p {
+    display: inline;
+}
+
 .fancy-buttons {
     line-height: 0.95em;
 }
