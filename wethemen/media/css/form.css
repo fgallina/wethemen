@@ -1,0 +1,65 @@
+form.contact p {
+    clear: left;
+    margin: 0;
+    /* padding: 5px 0 8px 0; */
+    padding-left: 155px; /*width of left column containing the label elements*/
+}
+
+form.contact label {
+    font-weight: bold;
+    float: left;
+    margin-left: -155px; /*width of left column*/
+    width: 150px; /*width of labels. Should be smaller than left column (155px) to create some right margin*/
+}
+
+form.contact input[type="text"] { /*width of text boxes. IE6 does not understand this attribute*/
+    width: 210px;
+    border: 1px solid #d5cac7;
+}
+
+form.contact p {
+    margin: 0 0 10px 0 !important;
+}
+
+form.contact textarea {
+    width: 420px;
+    height: 250px;
+    border: 1px solid #d5cac7;
+    resize: none;
+}
+
+form.contact .submit {
+    float: right;
+    display: block;
+    border: 0px;
+    background-image: url(/media/images/button.png);
+    background-repeat: no-repeat;
+    background-color: transparent;
+    color: #fff;
+    font-weight: bold;
+    width: 100px;
+    height: 25px;
+    text-align: left;
+    padding-left: 25px;
+    cursor: pointer;
+    cursor: hand;
+}
+
+
+form.contact .submit:hover {
+    background-image: url(/media/images/button-hover.png);
+}
+
+/*.threepxfix class below:
+Targets IE6- ONLY. Adds 3 pixel indent for multi-line form contents.
+to account for 3 pixel bug: http://www.positioniseverything.net/explorer/threepxtest.html
+*/
+
+* html .threepxfix{
+margin-left: 3px;
+}
+
+.form-error {
+    padding-left: 155px;
+    color: #bc2a27;
+}
