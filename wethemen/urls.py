@@ -1,5 +1,12 @@
 from django.conf.urls.defaults import *
 from django.conf import settings
+from basic.blog.feeds import BlogPostsFeed, BlogPostsByCategory, CommentsFeed
+
+feeds = {
+    'latest_posts': BlogPostsFeed,
+    'latest_posts_by_category': BlogPostsByCategory,
+    'latest_comments': CommentsFeed
+}
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
@@ -18,9 +25,9 @@ urlpatterns = patterns('',
     # (r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
     # Uncomment the next line to enable the admin:
+    (r'^feeds/(?P<url>.*)/$', 'django.contrib.syndication.views.feed', {'feed_dict': feeds}),
     (r'^admin/', include(admin.site.urls)),
 )
-
 
 if settings.DEBUG:
     urlpatterns += patterns(

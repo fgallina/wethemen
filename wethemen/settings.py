@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # Django settings for wethemen project.
 import os
+from local_settings import *
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -66,7 +67,8 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware'
+    'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
 
 ROOT_URLCONF = 'wethemen.urls'
@@ -99,11 +101,13 @@ INSTALLED_APPS = (
 
     'basic.inlines',
     'basic.blog',
+    'basic.media',
     'quoteme',
 
     'flatpagesmod',
     'honeypot',
     'contact_form',
+    'debug_toolbar',
 )
 
 HONEYPOT_FIELD_NAME = 'king_fu'
@@ -130,3 +134,5 @@ FILEBROWSER_SELECT_FORMATS = {
 }
 
 THUMBNAIL_EXTENSION = 'png'
+
+INTERNAL_IPS = ('127.0.0.1',)
