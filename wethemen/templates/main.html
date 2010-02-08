@@ -1,4 +1,4 @@
-{% load blog comments %}
+{% load blog archive comments quoteme_tags %}
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
   <head>
@@ -12,14 +12,14 @@
     <link rel="stylesheet" href="/media/css/clearfix.css" type="text/css" media="screen" />
     <link rel="stylesheet" href="/media/css/style.css" type="text/css" media="screen" />
     <!--[if IE 6]>
-    <link rel="stylesheet" href="/media/css/ie.css" type="text/css" media="screen" />
-    <![endif]-->
+        <link rel="stylesheet" href="/media/css/ie.css" type="text/css" media="screen" />
+        <![endif]-->
     <link rel="stylesheet" href="/media/css/slider.css" type="text/css" media="screen" />
     {% block css %}{% endblock %}
   </head>
   <body>
     <div id="container">
-      <div id="header">        
+      <div id="header">
         <div id="header-menu-logo-container" class="clearfix">
           <div id="header-logo">
             <a href="#">
@@ -84,6 +84,8 @@
       </div>
       <div id="main" class="clearfix">
         <div id="main-left">
+          <a id="content-top" />
+          {% block content_title %}{% endblock %}
           {% block content %}{% endblock %}
         </div>
         <div id="main-right">
@@ -97,36 +99,79 @@
             </form>
             {% endblock %}
             {% block sidebar %}
+
             <h3>Latest posts</h3>
-              <ol class="sidebar-widget fancy-buttons" id="blog-latest-posts">
-                {% get_latest_posts 10 as latest_posts %}
-                {% for post in latest_posts %}
-                <li>
-                  <a href="{{ post.get_absolute_url }}">
-                    <span class="title">{{ post.title }}</span>
-                    <span>{{ post.created|date:"m/d/Y" }} - Author: {{ post.author }}</span>
-                  </a>
-                </li>
-                {% endfor %}
-                {% endblock %}            
-              </ol>
-              <a href="#" class="read-more clearfix">
-                More
-              </a>
-              <a href="#" class="subscribe clearfix">
-                <img src="/media/images/banner-rss.gif" alt="Subscribe to our RSS." />
-              </a>
-              <blockquote>
-                <p>
-                  Thanks to Mr. Gates, we now know that an open Internet
-                  with protocols anyone can implement is communism; it was
-                  set up by that famous communist agent, the US Department
-                  of Defense.
-                </p>
-              </blockquote>
+            <ol class="sidebar-widget fancy-buttons" id="blog-latest-posts">
+              {% get_latest_posts 10 as latest_posts %}
+              {% for post in latest_posts %}
+              <li>
+                <a href="{{ post.get_absolute_url }}">
+                  <span class="title">{{ post.title }}</span>
+                  <span>{{ post.created|date:"m/d/Y" }} - Author: {{ post.author }}</span>
+                </a>
+              </li>
+              {% endfor %}
+            </ol>
+            <a href="{% url blog_index %}" class="read-more clearfix">
+              More
+            </a>
+
+            <h3>Archive</h3>
+            <ol class="sidebar-widget fancy-buttons" id="blog-archive">
+              {% get_post_archive 10 as archives %}
+              {% for archive in archives %}
+              <li>
+                <a href="{% url blog_archive_month year=archive.year,month=archive.month%}">
+                  <span class="title">{{ archive|date:"F Y" }}</span>
+                </a>
+              </li>
+              {% endfor %}
+            </ol>
+
+            {% get_blog_categories as category_list %}
+            {% if category_list %}
+            <h3>Categories</h3>
+            <ol class="sidebar-widget fancy-buttons" id="blog-categories">
+              {% for category in category_list %}
+              <li>
+                <a href="{% url blog_category_detail slug=category.slug %}">
+                  <span class="title">{{ category }} ({% if category.post_set.count %}{{ category.post_set.count }}{% else %}0{% endif %})</span>
+                </a>
+              </li>
+              {% endfor %}
+            </ol>
+            {% endif %}
+            
+            {% get_blogroll as blogroll_list %}
+            {% if blogroll_list %}
+            <h3>Blog roll</h3>
+            <ol class="sidebar-widget fancy-buttons" id="blog-blogroll">
+              {% for blog in blogroll_list %}
+              <li>
+                <a href="{{ blog.get_absolute_url }}" target="blank">
+                  <span class="title">{{ blog.name }}</span>
+                  <span>{{ blog.url }}</span>
+                </a>
+              </li>
+              {% endfor %}
+            </ol>
+            {% endif %}            
+
+            <a href="/feeds/latest_posts/" class="subscribe clearfix">
+              <img src="/media/images/banner-rss.gif" alt="Subscribe to our RSS." />
+            </a>
+            
+            {% get_random_quote as quote %}
+            <blockquote>
+              <p>
+                {{ quote.quote }}
+              </p>
+            </blockquote>
             <p class="quote-author">
-              Richard M. Stallman
+              {{ quote.author }}
             </p>
+
+            {% endblock %}
           </div>
         </div>
       </div>
