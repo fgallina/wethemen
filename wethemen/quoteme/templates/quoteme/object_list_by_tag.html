@@ -1,0 +1,18 @@
+{% load i18n %}
+
+<html>
+<body>
+
+<h1>{% trans "List by tag:" %} {{ tag }}</h1>
+
+{% for object in object_list %}
+    {% ifequal type 'testimonial' %}
+        {% include 'quoteme/includes/testimonial.html' %}
+    {% endifequal  %}
+    {% ifequal type 'quote' %}
+        {% include 'quoteme/includes/quote.html' %}
+    {% endifequal %}
+{% endfor %}
+
+</body>
+</html>

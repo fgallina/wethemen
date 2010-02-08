@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # Django settings for wethemen project.
 import os
 
@@ -10,8 +11,8 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-DATABASE_ENGINE = ''           # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-DATABASE_NAME = ''             # Or path to database file if using sqlite3.
+DATABASE_ENGINE = 'sqlite3'           # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+DATABASE_NAME = 'test.db'             # Or path to database file if using sqlite3.
 DATABASE_USER = ''             # Not used with sqlite3.
 DATABASE_PASSWORD = ''         # Not used with sqlite3.
 DATABASE_HOST = ''             # Set to empty string for localhost. Not used with sqlite3.
@@ -48,7 +49,7 @@ MEDIA_URL = '/media/'
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
 # Examples: "http://foo.com/media/", "/media/".
-ADMIN_MEDIA_PREFIX = '/adminmedia/'
+ADMIN_MEDIA_PREFIX = '/admin_media/'
 
 # Make this unique, and don't share it with anybody.
 # Don't worry, this will be changed in production :) -- fg
@@ -65,6 +66,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware'
 )
 
 ROOT_URLCONF = 'wethemen.urls'
@@ -82,13 +84,29 @@ INSTALLED_APPS = (
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.sites',
-
+    'django.contrib.admin',
+    'django.contrib.markup',
+    'django.contrib.comments',
+    'django.contrib.flatpages',
+    
+    'django_wysiwyg',
+    'sugar',
     'filebrowser',
     'tinymce',
+    'tagging',
+    'django_bitly',
+    'django_twitter',
 
-    'whethemen.flatpagesmod',
-    'whethemen.contact',
+    'basic.inlines',
+    'basic.blog',
+    'quoteme',
+
+    'flatpagesmod',
+    'honeypot',
+    'contact_form',
 )
+
+HONEYPOT_FIELD_NAME = 'king_fu'
 
 TINYMCE_JS_ROOT = MEDIA_ROOT + 'js/tiny_mce'
 TINYMCE_JS_URL = MEDIA_URL + 'js/tiny_mce/tiny_mce.js'
