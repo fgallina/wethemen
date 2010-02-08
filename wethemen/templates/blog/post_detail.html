@@ -7,6 +7,7 @@
 
 
 {% block content_title %}
+  <p class="date">{{ object.publish|date:"F d, Y" }}</p>
   <h2>{{ object.title }}</h2>
   <p class="other_posts">
     {% if object.get_previous_by_publish %}
@@ -21,8 +22,6 @@
 
 {% block content %}
   {% load markup blog comments tagging_tags inlines %}
-  
-  <p class="date">{{ object.publish|date:"j F Y" }}</p>
   
   <div class="body">
     {{ object.body_markup|render_inlines|safe }}
