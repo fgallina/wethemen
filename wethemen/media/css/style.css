@@ -152,7 +152,7 @@ b, strong {
     padding-top: 40px;
 }
 
-#main-left h2 {
+#main-left h2, #main-left h3 {
     padding: 3px 0 0 35px;
     margin: 0 0 12px 0;
     font-size: 32px;
@@ -161,6 +161,15 @@ b, strong {
     color: #bc2a27;
 }
 
+#main-left h2 a, #main-left h3 a {
+    color: #bc2a27;
+    text-decoration: none;
+}
+
+#main-left h2 a:hover, #main-left h3 a:hover {
+    color: #bc2a27;
+    text-decoration: underline;
+}
 
 #main-right {
     float: right;
@@ -198,6 +207,58 @@ b, strong {
     color: #de5e3b;
     font-weight: bold;
     line-height: 2em;
+}
+
+#main-right-content a.subscribe {
+    margin: 80px 0 10px 0;
+    text-decoration: none;
+}
+
+#main-right-content a.read-more {
+    display: inline-block;
+    width: 58px;
+    height: 26px;
+    background-image: url(/media/images/button.png);
+    background-repeat: no-repeat;
+    color: #fff;
+    font-weight: bold;
+    font-size: 16px;
+    text-decoration: none;
+    padding-left: 30px;
+    float: right;
+    margin: 10px 20px 10px 0;
+    padding-top: 4px;
+}
+
+#main-right-content a.read-more:hover {
+    background-image: url(/media/images/button-hover.png);
+}
+
+#main-right-content blockquote {
+    color: #596A74;
+    line-height: 1.5em;
+    font-size: 0.9em;
+    quotes: "\201C" "\201D";
+}
+
+#main-right-content blockquote p {
+    display: inline;
+}
+
+#main-right-content blockquote:before { 
+    content: open-quote; font-weight: bold; 
+}
+
+#main-right-content blockquote:after { 
+    content: close-quote; font-weight: bold; 
+}
+
+#main-right-content p.quote-author {
+    text-align: right;
+    color: #596A74;
+    font-style: italic;
+    font-size: 0.7em;
+    margin: 10px 10px 0 0;
 }
 
 .fancy-buttons {
