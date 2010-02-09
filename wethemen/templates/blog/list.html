@@ -1,0 +1,33 @@
+{% load tagging_tags %}
+<div class="post_list">
+  {% for post in object_list %}
+  {% tags_for_object post as tag_list %}
+  <div class="post">
+    <h3 class="post_title"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
+    <p class="info">
+      <span class="author"><b>Author:</b> {{ post.author }}</span> |
+      <span class="date">
+        <a href="{% url blog_archive_day day=post.publish.day,month=post.publish.month,year=post.publish.year %}">
+          {{ post.publish|date:"F d, Y" }}
+        </a>
+      </span>
+    </p>
+    <p class="tease">{{ post.tease|safe }}</p>
+    <p class="info">
+      {% if post.categories.all %}
+      <span class="categories"><b>Categories:</b>
+        {% for category in post.categories.all %}
+        <a href="{% url blog_category_detail slug=category.slug %}">{{ category }}</a>{% if not forloop.last %},{% endif %} 
+        {% endfor %}
+      </span>
+      {% endif %}
+      {% if tags %}
+      <br />
+      <span class="tags"><b>Tags:</b>
+        {% for tag in tags %}{{ tag }}, {% endfor %}
+      </span>
+      {% endif %}
+    </p>
+  </div>
+  {% endfor %}
+</div>

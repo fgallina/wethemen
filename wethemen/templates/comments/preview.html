@@ -1,0 +1,52 @@
+{% extends "main.html" %}
+{% load i18n %}
+{% load gravatar %}
+
+{% block title %}{% trans "Preview your comment" %}{% endblock %}
+
+{% block content %}
+  {% load comments %}
+  <form action="{% comment_form_target %}" class="contact" method="post">
+    {% if form.errors %}
+    <h1>{% blocktrans count form.errors|length as counter %}Please correct the error below{% plural %}Please correct the errors below{% endblocktrans %}</h1>
+    {% else %}
+    <h1>{% trans "Preview your comment" %}</h1>
+
+      <ol class="commentlist">
+        <li id="c{{ comment.id }}">
+          <div id="comment-{{ comment.id }}">
+            <div class="comment-author vcard">
+              {% gravatar_img_for_email form.get_comment_object.email 64 %}
+              <cite class="fn">{% if form.get_comment_object.url %}<a rel="external nofollow" href="http://wordpress.org/">{% endif %}{{ form.get_comment_object.name }}{% if form.get_comment_object.url %}</a>{% endif %}</cite>
+              <span class="says">says:</span>
+            </div>
+            <br />
+            <p style="padding-left: 0px !important;">
+              {{ form.get_comment_object.comment }}
+            </p>
+          </div>
+        </li>
+      </ol>
+
+      <p>
+        <input type="submit" name="submit" class="submit-post" value="{% trans "Post your comment" %}" id="submit" /> {% trans "or make changes" %}:
+      </p>
+    {% endif %}
+    {% for field in form %}
+      {% if field.is_hidden %}
+      <p style="display: none">
+        {{ field }}
+      </p>
+      {% else %}
+        <p{% ifequal field.name "honeypot" %} style="display:none;"{% endifequal %}>
+          {{ field.label_tag }} {{ field }}
+        </p>
+        {% if field.errors %}{{ field.errors }}{% endif %}
+      {% endif %}
+    {% endfor %}
+    <p class="submit">
+    <input type="submit" name="submit" class="submit-post" value="{% trans "Post" %}" />
+    <input type="submit" name="preview" class="submit-preview" value="{% trans "Preview" %}" />
+    </p>
+  </form>
+{% endblock %}

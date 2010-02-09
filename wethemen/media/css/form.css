@@ -1,53 +1,80 @@
-form.contact p {
+form.fancy p {
     clear: left;
     margin: 0;
     /* padding: 5px 0 8px 0; */
     padding-left: 155px; /*width of left column containing the label elements*/
 }
 
-form.contact label {
+form.fancy label {
     font-weight: bold;
     float: left;
     margin-left: -155px; /*width of left column*/
-    width: 150px; /*width of labels. Should be smaller than left column (155px) to create some right margin*/
+    width: 150px; /*width of labels. Should be smaller than left column (155px) to create some right margin*/    
+    font-size: 18px;
+    color: #596A74;
+    text-align: right;
+    padding-right: 10px;
 }
 
-form.contact input[type="text"] { /*width of text boxes. IE6 does not understand this attribute*/
-    width: 210px;
+form.fancy input[type="text"], 
+form.fancy textarea {
     border: 1px solid #d5cac7;
+    background-color: #f7ece9;
+    font-size: 16px;
+    color: #605853;
+    padding: 1px;
 }
 
-form.contact p {
+form.fancy input[type="text"] { /*width of text boxes. IE6 does not understand this attribute*/
+    width: 210px;
+    height: 26px;
+}
+
+form.fancy p {
     margin: 0 0 10px 0 !important;
 }
 
-form.contact textarea {
+form.fancy textarea {
     width: 420px;
     height: 250px;
-    border: 1px solid #d5cac7;
     resize: none;
 }
 
-form.contact .submit {
+form.fancy .submit,
+form.fancy .submit-medium {
     float: right;
     display: block;
     border: 0px;
-    background-image: url(/media/images/button.png);
-    background-repeat: no-repeat;
-    background-color: transparent;
     color: #fff;
     font-weight: bold;
-    width: 100px;
     height: 25px;
     text-align: left;
     padding-left: 25px;
     cursor: pointer;
     cursor: hand;
+    margin-right: 5px;
 }
 
+form.fancy .submit {
+    background-image: url(/media/images/button.png);
+    background-repeat: no-repeat;
+    background-color: transparent;    
+    width: 100px;
+}
 
-form.contact .submit:hover {
+form.fancy .submit-medium {
+    background-image: url(/media/images/button-medium.png);
+    background-repeat: no-repeat;
+    background-color: transparent;
+    width: 126px;
+}
+
+form.fancy .submit:hover {
     background-image: url(/media/images/button-hover.png);
+}
+
+form.fancy .submit-medium:hover {
+    background-image: url(/media/images/button-medium-hover.png);
 }
 
 /*.threepxfix class below:

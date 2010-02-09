@@ -1,0 +1,20 @@
+{% load comments i18n %}
+<form class="fancy" action="{% comment_form_target %}" method="post">
+  {% for field in form %}
+    {% if field.is_hidden %}
+    <p style="display:none">
+      {{ field }}
+    </p>
+    {% else %}
+      <p{% ifequal field.name "honeypot" %} style="display:none;"{% endifequal %}>
+        {{ field.label_tag }} {{ field }}
+      </p>
+      {% if field.errors %}{{ field.errors }}{% endif %}
+    {% endif %}
+  {% endfor %}
+  <p>
+    <input type="hidden" name="next" value="{{ object.get_absolute_url }}" />
+    <input type="submit" name="post" class="submit" value="{% trans "Post" %}" />
+    <input type="submit" name="preview" class="submit-medium" value="{% trans "Preview" %}" />
+  </p>
+</form>

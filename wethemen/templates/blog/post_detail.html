@@ -1,32 +1,36 @@
 {% extends "blog/base_blog.html" %}
+{% load i18n %}
 
 
 {% block title %}{{ object.title }}{% endblock %}
 {% block body_class %}{{ block.super }} post_detail{% endblock %}
 {% block body_id %}post_{{ object.id }}{% endblock %}
+{% block css %}
+<link rel="stylesheet" href="/media/css/form.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="/media/css/comments.css" type="text/css" media="screen" />
+{% endblock %}
 
 
 {% block content_title %}
-  <p class="date">{{ object.publish|date:"F d, Y" }}</p>
-  <h2>{{ object.title }}</h2>
-  <p class="other_posts">
+  <h3 class="post_title">{{ object.title }}</h3>
+  <p class="info">
     {% if object.get_previous_by_publish %}
     <a class="previous" href="{{ object.get_previous_post.get_absolute_url }}">&laquo; {{ object.get_previous_post }}</a>
     {% endif %}
     {% if object.get_next_by_publish %}
-    | <a class="next" href="{{ object.get_next_post.get_absolute_url }}">{{ object.get_next_post }} &raquo;</a> 
+    | <a class="next" href="{{ object.get_next_post.get_absolute_url }}">{{ object.get_next_post }} &raquo;</a>
     {% endif %}
   </p>
 {% endblock %}
 
 
 {% block content %}
-  {% load markup blog comments tagging_tags inlines %}
-  
+  {% load markup blog comments tagging_tags inlines gravatar %}
+
   <div class="body">
     {{ object.body_markup|render_inlines|safe }}
   </div>
-  
+
   {% tags_for_object object as tag_list %}
   {% if tag_list %}
   <p class="inline_tag_list"><strong>Related tags:</strong>
@@ -35,32 +39,52 @@
     {% endfor %}
   </p>
   {% endif %}
-  
+
   {% get_comment_list for object as comment_list %}
   {% if comment_list %}
   <div id="comments">
-    <a name="comments"></a>
-    <h3 class="comments_title">Comments</h3>
-    {% for comment in comment_list %}
-      {% if comment.is_public %}
-      <div class="comment">
-        <h5 class="name">
-          <a name="c{{ comment.id }}" href="{{ comment.get_absolute_url }}" title="Permalink to {{ comment.person_name }}'s comment" class="count">{{ forloop.counter }}</a> 
-          {% if comment.user_url %}<a href="{{ comment.user_url }}">{{ comment.user_name }}</a>{% else %}{{ comment.user_name }}{% endif %} says...
-        </h5>
-        {{ comment.comment|urlizetrunc:"60"|markdown:"safe" }}
-        <p class="date">Posted at {{ comment.submit_date|date:"P" }} on {{ comment.submit_date|date:"F j, Y" }}</p>
-      </div>
+    <h3 id="comments-title">{{ comment_count }} Responses to “{{ object.title }}”</h3>
+    <ol class="commentlist">
+      {%if comment_list %}
+      {% for comment in comment_list %}
+      <li id="c{{ comment.id }}">
+        <div id="comment-{{ comment.id }}">
+          <div class="comment-author vcard">
+            {% if comment.url %}
+            <a href="{{comment.url}}" target="blank" rel="external nofollow">
+            {% endif %}
+              {% gravatar_img_for_email comment.user_email 64 %}
+            {% if comment.url %}
+            </a>
+            {% endif %}
+            <cite class="fn">
+              {% if comment.url %}
+              <a rel="external nofollow" href="{{comment.url}}" target="blank">
+              {% endif %}
+              {{comment.user_name}}
+              {% if comment.url %}
+              </a>
+              {% endif %}
+            </cite>
+            <span class="says">says:</span>
+          </div>
+          <p>
+            {{ comment.comment }}
+          </p>
+          <div class="comment-meta commentmetadata">
+            <b>Posted:</b>
+            <a href="#comment-{{ comment.id }}">
+              {{ comment.submit_date|date:"F d, Y H:i" }}
+            </a>
+          </div>
+        </div>
+      </li>
+      {% endfor %}
+      {% else %}
+      <li>{% trans "No comments yet... Be the first!" %}</li>
       {% endif %}
-    {% endfor %}
-  </div>
-  {% endif %}
-  {% if object.allow_comments %}
+    </ol>
     {% render_comment_form for object %}
-  {% else %}
-    <div id="comment_form">
-      <h3>Comments are closed.</h3>
-      <p>Comments have been close for this post.</p>
-    </div>
+  </div>
   {% endif %}
 {% endblock %}

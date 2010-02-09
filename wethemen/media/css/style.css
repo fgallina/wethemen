@@ -164,12 +164,15 @@ ol, ul {
 }
 
 #main-left h3 {
-    padding: 3px 0 0 35px;
     margin: 0 0 12px 0;
     font-size: 24px;
-    background-image: url(../images/icon-post.gif);
     background-repeat: no-repeat;
     color: #bc2a27;
+}
+
+#main-left h3.post_title {
+    background-image: url(../images/icon-post.gif);
+    padding: 3px 0 0 35px;
 }
 
 #main-left h2 a, #main-left h3 a {
@@ -182,27 +185,30 @@ ol, ul {
     text-decoration: underline;
 }
 
-#main-left p.date {
-    font-style: italic;
-    text-align: right;
-    font-size: 0.8em;
-    margin-bottom: 0px;
+#main-left .post {
+    background-image: url(../images/sidebar-item-separator.gif);
+    background-position: bottom;
+    background-repeat: repeat-x;
+    padding-bottom: 1px;
+    margin-bottom: 50px;
 }
 
-#main-left .other_posts {
-    margin-top: -20px;
+#main-left .info {
+    color: #596a74;
+    font-size: 0.9em;
+    margin-top: -10px;
 }
 
-#main-left .other_posts a.previous,
-#main-left .other_posts a.next {
+#main-left .info a,
+#main-left .info a {
     font-style: italic;
     text-align: right;
     font-size: 0.8em;
     color: #7c90a1;
 }
 
-#main-left .other_posts a.previous:hover,
-#main-left .other_posts a.next:hover {
+#main-left .info a:hover,
+#main-left .info a:hover {
     color: #596a74;
 }
 
@@ -280,12 +286,12 @@ ol, ul {
     display: inline;
 }
 
-#main-right-content blockquote:before { 
-    content: open-quote; font-weight: bold; 
+#main-right-content blockquote:before {
+    content: open-quote; font-weight: bold;
 }
 
-#main-right-content blockquote:after { 
-    content: close-quote; font-weight: bold; 
+#main-right-content blockquote:after {
+    content: close-quote; font-weight: bold;
 }
 
 #main-right-content p.quote-author {
@@ -386,7 +392,7 @@ ol, ul {
 }
 
 #footer-main .fancy-buttons li {
-    background-image: url(../images/footer-item-separator.gif);    
+    background-image: url(../images/footer-item-separator.gif);
 }
 
 #footer-main .fancy-buttons p, #footer-main .fancy-buttons span {
@@ -420,4 +426,4 @@ ol, ul {
     color: #d5cac7;
     text-align: center;
     font-size: 0.7em;
-} 
+}

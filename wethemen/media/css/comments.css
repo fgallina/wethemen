@@ -1,0 +1,75 @@
+#comment {
+    width:610px;
+}
+
+#comment .says {
+    padding-left: 0px !important;
+}
+
+.comment-author img.avatar {
+    position: relative;
+    top: -8px;
+}
+
+#comments {
+    margin-top:30px;
+}
+
+#comments h3 {
+    margin-top:30px;
+}
+
+#respond h3 {
+    margin-bottom:-5px;
+    margin-top:30px;
+}
+
+ol.commentlist li {
+    border-color:#605853 -moz-use-text-color -moz-use-text-color;
+    border-style:solid none none;
+    border-width:1px 0 0;
+    color:#605853;
+    padding:20px;
+}
+
+ol.commentlist .comment-meta,
+ol.commentlist .comment-author {
+    font-size: 0.9em;
+    margin-top: -10px;
+    color: #596a74;
+}
+
+ol.commentlist .comment-meta a,
+ol.commentlist .comment-author a {
+    color: #596a74;
+    font-style: italic;
+    text-align: right;
+    font-size: 0.8em;
+}
+
+ol.commentlist .comment-meta a:hover,
+ol.commentlist .comment-author a:hover {
+    color: #7c90a1;
+}
+
+.commentlist li .avatar {
+    -moz-background-clip:border;
+    -moz-background-inline-policy:continuous;
+    -moz-background-origin:padding;
+    background:#605853 none repeat scroll 0 0;
+    border:1px solid #666666;
+    float: right;
+    padding:2px;
+    margin-top: 30px;
+}
+.commentlist cite, .commentlist cite a {
+    font-size:14px;
+    font-style:normal;
+    font-weight:bold;
+}
+
+ol.commentlist {
+    border-color:-moz-use-text-color -moz-use-text-color #605853;
+    border-style:none none solid;
+    border-width:0 0 1px;
+}
